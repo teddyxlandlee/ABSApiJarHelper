@@ -25,7 +25,9 @@ java {
 
 publishing {
     publications {
-        create("mavenJava", MavenPublication::class)
+        create("mavenJava", MavenPublication::class) {
+            from(components["java"])
+        }
     }
 
     repositories {
