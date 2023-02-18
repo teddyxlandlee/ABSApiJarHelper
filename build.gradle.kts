@@ -1,22 +1,34 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
+    java
+    `maven-publish`
 }
 
 group = "xland.gradle"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
+    maven("https://maven.aliyun.com/repository/public")
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
+    //implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("org.ow2.asm:asm:9.4")
+    compileOnly("org.jetbrains:annotations:24.0.0")
 }
 
-tasks.test {
-    useJUnitPlatform()
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
 }
 
-kotlin {
-    jvmToolchain(8)
+publishing {
+    publications {
+        create("mavenJava", MavenPublication::class)
+    }
+
+    repositories {
+        mavenLocal()
+    }
 }
