@@ -37,7 +37,7 @@ public class ClassFilterVisitor extends ClassVisitor {
     public FieldVisitor visitField(int access, String name, String descriptor, String signature, Object value) {
         if (isExcluded) return null;
         if (Blacklists.accessExcluded(access)) {
-            this.isExcluded = true;
+            //this.isExcluded = true;
             return null;
         }
         return new FieldFilterVisitor(name, descriptor, entry);
@@ -47,7 +47,7 @@ public class ClassFilterVisitor extends ClassVisitor {
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
         if (isExcluded) return null;
         if (Blacklists.accessExcluded(access)) {
-            this.isExcluded = true;
+            //this.isExcluded = true;
             return null;
         }
         return new MethodFilterVisitor(name, descriptor, entry);

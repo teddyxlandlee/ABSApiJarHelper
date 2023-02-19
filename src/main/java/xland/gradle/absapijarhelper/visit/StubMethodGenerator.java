@@ -57,6 +57,7 @@ final class StubMethodGenerator extends MethodVisitor {
         realDelegate.visitInsn(Opcodes.DUP);
         realDelegate.visitLdcInsn(ERROR_MESSAGE);
         realDelegate.visitMethodInsn(Opcodes.INVOKESPECIAL, T_CCE, "<init>", "(Ljava/lang/String;)V", false);
+        realDelegate.visitInsn(Opcodes.ATHROW);
         realDelegate.visitMaxs(-1, -1);
     }
 
