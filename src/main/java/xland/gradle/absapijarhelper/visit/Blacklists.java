@@ -10,6 +10,7 @@ public class Blacklists {
     }
 
     public static boolean annotationExcluded(String descriptor) {
-        return "Lorg/jetbrains/annotations/ApiStatus$Internal;".equals(descriptor);
+        return "Lorg/jetbrains/annotations/ApiStatus$Internal;".equals(descriptor) ||
+               "Lorg/spongepowered/asm/mixin/Mixin;".equals(descriptor);
     }
 }
